@@ -7,9 +7,15 @@ public class NStar {
 		
 		System.out.println("Enter a number: ");
 		int n = keyboard.nextInt();
+		keyboard.close();
 		
+		String star = "*";
+		String space = " ";
 		for(int i = 0; i<n ;i++) {
-			print
+			String repeatedStar = new String(new char[2*i+1]).replace("\0", star);
+			String repeatedSpace = new String(new char[n-i]).replace("\0", space);
+			System.out.print(repeatedSpace + repeatedStar + repeatedSpace +"\n");
 		}
+		
 	}
 }
