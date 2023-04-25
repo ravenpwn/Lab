@@ -29,10 +29,10 @@ public class DaysOfAMonth {
 		
 		if(strMonth.length() < 3) {
 			try {
-                monthNumber = Integer.parseInt(strMonth);
-            } catch (NumberFormatException e) {
-            	// TODO: handle exception
-            }
+                		monthNumber = Integer.parseInt(strMonth);
+            		} catch (NumberFormatException e) {
+            			// TODO: handle exception
+            		}
 		} else {
 			try {
 				strMonth = strMonth.substring(0, 3);

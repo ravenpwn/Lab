@@ -4,10 +4,8 @@ import java.util.Scanner;
 public class MatrixUtil {
 	public static void main(String[] args) {
 		MatrixUtil matrixUtil = new MatrixUtil();
-//		double[][] matA = {{1, 2},
-//						   {3, 4}};
-//		double[][] matB = {{5, 6},
-//				   		   {7, 8}};
+//		double[][] matA = {{1, 2}, {3, 4}};
+//		double[][] matB = {{5, 6}, {7, 8}};
 		double[][] matA = matrixUtil.getMatrixInput();
 		double[][] matB = matrixUtil.getMatrixInput(true);
 		double[][] resultMat = matrixUtil.add(matA, matB);
