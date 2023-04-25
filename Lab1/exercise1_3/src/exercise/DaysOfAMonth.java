@@ -1,6 +1,10 @@
 package exercise;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
-import java.time.Month;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.YearMonth;
 
 public class DaysOfAMonth {
@@ -15,7 +19,7 @@ public class DaysOfAMonth {
 			
 			DaysOfAMonth daysOfAMonth = new DaysOfAMonth();
 			int result = daysOfAMonth.getDayOfMonth(strMonth, year);
-			
+//			int result = daysOfAMonth.getDayOfMonth2(strMonth, year);
 			if(result == 0) {
 				System.out.println("Invalid month/year input. Please try again!");
 			} else {
@@ -26,15 +30,15 @@ public class DaysOfAMonth {
 	
 	public int getDayOfMonth(String strMonth, int year) {
 		int monthNumber = 0;
-		
 		if(strMonth.length() < 3) {
 			try {
-                		monthNumber = Integer.parseInt(strMonth);
-            		} catch (NumberFormatException e) {
-            			// TODO: handle exception
-            		}
+				monthNumber = Integer.parseInt(strMonth);
+			} catch (NumberFormatException e) {
+				// TODO: handle exception
+			}
 		} else {
 			try {
+				
 				strMonth = strMonth.substring(0, 3);
 				String temp = strMonth.substring(0, 1).toUpperCase() + strMonth.substring(1);
 				
@@ -42,10 +46,12 @@ public class DaysOfAMonth {
 					return 0;
 				}
 				
-				Month month = Month.valueOf(strMonth.toUpperCase());
+				Date date = new SimpleDateFormat("MMM", Locale.ENGLISH).parse(strMonth);
+			    Calendar cal = Calendar.getInstance();
+			    cal.setTime(date);
+			    monthNumber = cal.get(Calendar.MONTH)+ 1;
 				
-				monthNumber = month.getValue();
-			} catch (IllegalArgumentException e) {
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 		}
@@ -59,7 +65,6 @@ public class DaysOfAMonth {
 	}
 	
 	public int getDayOfMonth2(String strMonth, int year) {
-		int days = 0;
 		switch(strMonth) {
 			case "January":
 			case "Jan.":
@@ -107,12 +112,10 @@ public class DaysOfAMonth {
 			case "Feb.":
 			case "Feb":
 			case "2":
-				if(year % 4 == 0)
+				if(year % 4 != 0 || (year % 400 != 0 && year % 100 == 0))
 				{
-					if(year % 400 == 0 || year % 100 != 0) {
-						return 29;
-					}
+					return 28;
 				}
-		}		return 28;
+		}		return 29;
 	}
 }
