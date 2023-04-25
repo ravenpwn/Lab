@@ -1,0 +1,14 @@
+package exercise;
+
+public class MatrixAdd {
+	public static void main(String[] args) {
+		MatrixAdd matrixAdd = new MatrixAdd();
+		double[][] matA = {{1, 2},
+						   {3, 4}};
+		}
+	}
+	
+	public double[][] getMatrixInput() {
+		
+	}
+}

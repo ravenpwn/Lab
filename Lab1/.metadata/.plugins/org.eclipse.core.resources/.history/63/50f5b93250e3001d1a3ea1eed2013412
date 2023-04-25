@@ -1,0 +1,32 @@
+package labOneFour;
+import java.util.Arrays;
+
+public class ArrayUtil {
+	public static void main(String[] args) {
+		ArrayUtil arrUtil = new ArrayUtil();
+		int[] sampleArray = {1789, 2035, 1899, 1456, 2013};
+		int[] res = arrUtil.arraySort(sampleArray);
+		int sum = arrUtil.arraySum(sampleArray);
+		
+		System.out.println(Arrays.toString(res));
+		System.out.println(sum);
+	}
+	
+	public int[] arraySort(int[] arr) {
+		int [] processArr = arr.clone();
+		Arrays.sort(processArr);
+		return processArr;
+	}
+	
+	public int arraySum(int[] arr) {
+		int [] processArr = arr.clone();
+		int sum = Arrays.stream(processArr).sum();
+		return sum;
+	}
+	
+	public double arrayAverage(int[] arr) {
+		int sum = this.arraySum(arr);
+		double average = sum / arr.length;
+		return average;
+	}
+}
