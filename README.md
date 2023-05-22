@@ -1,2 +1,2 @@
 # IT3100E Lab
-CourseID: 727655
+Course ID: 727655
