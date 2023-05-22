@@ -7,7 +7,7 @@ public class Cart {
 	private int qtyOrdered = 0;
 	
 	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
-		if (qtyOrdered == 20) {
+		if (qtyOrdered == MAX_NUMBERS_ORDERED) {
 			System.out.println("Cannot add more DVDs, the cart is full.");
 			return;
 		}
@@ -19,7 +19,7 @@ public class Cart {
 			System.out.println("Something wrong happened. Please try again.");
 		}
 		
-		if(qtyOrdered == 20) {
+		if(qtyOrdered == MAX_NUMBERS_ORDERED) {
 			System.out.println("Info: The cart is full.");
 		}
 	}
