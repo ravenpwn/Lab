@@ -1,0 +1,39 @@
+package aims;
+
+public class DigitalVideoDisc {
+	private String title;
+	private String category;
+	private String director;
+	private int length;
+	private float cost;
+	
+	public String getTitle() {
+		return title;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public String getDirector() {
+		return director;
+	}
+	public int getLength() {
+		return length;
+	}
+	public float getCost() {
+		return cost;
+	}
+	
+	public DigitalVideoDisc(String dvd_title, String dvd_category, String dvd_director, int dvd_length,float dvd_cost) {
+		title = dvd_title;
+		category = dvd_category;
+		director = dvd_director;
+		length = dvd_length;
+		cost = dvd_cost;
+	}
+	
+	public DigitalVideoDisc(String dvd_title) {
+		this(dvd_title, "", "", 0, 0);
+	}
+	
+	
+}
