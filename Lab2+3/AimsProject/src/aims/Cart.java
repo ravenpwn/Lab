@@ -9,10 +9,10 @@ public class Cart {
 	private int qtyOrdered = 0;
 	
 	// toString method	
-	public String print() {
-		String cartString = "************************************CART************************************\n\n";
+	public void print() {
+		String cartString = "\n************************************CART************************************\n\n";
 		if(qtyOrdered == 0) {
-			return "The cart is empty.";
+			System.out.println("The cart is empty.");
 		}
 		for (int i = 0; i < qtyOrdered; i++ ) {
 			DigitalVideoDisc d = itemsOrdered.get(i);
@@ -24,8 +24,8 @@ public class Cart {
 						+ " - " + dD + " - " + dL + " - " + dCost +"$\n"
 						;
 		}
-		cartString += "\n************************************CART************************************";
-		return cartString;
+		cartString += "\n********************************CART************************************";
+		System.out.println(cartString);
 	}
 	
 	// Add Disc
@@ -125,7 +125,7 @@ public class Cart {
 	}
 	
 	private String checkString(String str, int len) {
-		String res = (str.isEmpty() || str.equals("0")) ? "Unknown" : str;
+		String res = str.equals("0") ? "Unknown" : str;
 		res = String.format("%1$" + len + "s", res);
 		return res;
 	}

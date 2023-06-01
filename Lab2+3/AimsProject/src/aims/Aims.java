@@ -21,6 +21,6 @@ public class Aims {
 		anOrder.removeDigitalVideoDisc(dvd3);
 		System.out.println("Total Cost is: ");
 		System.out.println(anOrder.totalCost());
-		System.out.println(anOrder.print());
+		anOrder.print();;
 	}
 }
