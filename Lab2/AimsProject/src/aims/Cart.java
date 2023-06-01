@@ -7,10 +7,8 @@ public class Cart {
 	private ArrayList<DigitalVideoDisc> itemsOrdered =  new ArrayList<DigitalVideoDisc>();
 	private int qtyOrdered = 0;
 	
-<<<<<<< Updated upstream
-=======
-	// toString method
-	
+
+	// toString method	
 	public String toString() {
 		String cartString = "***********************CART***********************\n";
 		if(qtyOrdered == 0) {
@@ -29,7 +27,6 @@ public class Cart {
 	}
 	
 	// Add Disc
->>>>>>> Stashed changes
 	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
 		if (qtyOrdered == MAX_NUMBERS_ORDERED) {
 			System.out.println("Cannot add more DVDs, the cart is full.");
