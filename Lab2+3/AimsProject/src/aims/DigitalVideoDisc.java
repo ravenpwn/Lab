@@ -31,7 +31,12 @@ public class DigitalVideoDisc {
 	
 	public DigitalVideoDisc(String dvd_title, String dvd_category, String dvd_director, int dvd_length, float dvd_cost) {
 		super();
-		title = dvd_title;
+		if(dvd_title.isBlank()) {
+			title = "Unknown";
+			System.out.println("Warning: DVD created without title.");
+		} else {
+			title = dvd_title;
+		}
 		category = dvd_category;
 		director = dvd_director;
 		length = dvd_length;
@@ -40,14 +45,19 @@ public class DigitalVideoDisc {
 	}
 	
 	public DigitalVideoDisc(String dvd_title) {
-		this(dvd_title, "", "", 0, 0);
+		this(dvd_title, "Unknown", "Unknown", 0, 0);
 	}
 	
 	public DigitalVideoDisc(String dvd_title, String dvd_category, float dvd_cost) {
-		this(dvd_title, dvd_category, "", 0, dvd_cost);
+		this(dvd_title, dvd_category, "Unknown", 0, dvd_cost);
 	}
 	public DigitalVideoDisc(String dvd_title, String dvd_category, String dvd_director, float dvd_cost) {
 		this(dvd_title, dvd_category, dvd_director, 0, dvd_cost);
+	}
+	
+	public void print() {
+		String res = title + " - " + category + " - " + director + " - " + String.valueOf(length) + " - " + String.valueOf(cost);
+		System.out.println(res);
 	}
 	
 	
