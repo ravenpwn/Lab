@@ -1,4 +1,6 @@
-package aims;
+package store;
+
+import dvd.DigitalVideoDisc;
 
 public class StoreTest {
 	public static void main(String[] args) {

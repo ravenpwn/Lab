@@ -1,7 +1,8 @@
-package aims;
+package cart;
 
 import java.util.ArrayList;
 import java.util.List;
+import dvd.*;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
@@ -20,7 +21,7 @@ public class Cart {
 			String dD = checkString(d.getDirector(), 15);
 			String dL = checkString(String.valueOf(d.getLength()), 3);
 			String dCost = checkString(String.valueOf(d.getCost()), 5);
-			cartString += String.valueOf(i) + ". DVD - " + String.format("%1$15s", d.getTitle()) + " - " + dCat 
+			cartString += String.valueOf(i+1) + ". DVD - " + String.format("%1$15s", d.getTitle()) + " - " + dCat 
 						+ " - " + dD + " - " + dL + " - " + dCost +"$\n"
 						;
 		}

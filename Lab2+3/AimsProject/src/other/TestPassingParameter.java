@@ -1,4 +1,6 @@
-package aims;
+package other;
+
+import dvd.DigitalVideoDisc;
 
 public class TestPassingParameter {
 	public static void main(String[] args) {
