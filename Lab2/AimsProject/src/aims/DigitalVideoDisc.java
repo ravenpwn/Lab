@@ -23,6 +23,10 @@ public class DigitalVideoDisc {
 		return cost;
 	}
 	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
 	public DigitalVideoDisc(String dvd_title, String dvd_category, String dvd_director, int dvd_length, float dvd_cost) {
 		super();
 		title = dvd_title;
