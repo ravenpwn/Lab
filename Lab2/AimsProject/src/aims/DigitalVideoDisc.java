@@ -1,6 +1,8 @@
 package aims;
 
 public class DigitalVideoDisc {
+	private static int nbDigitalVideoDiscs = 0;
+	public final int id;
 	private String title;
 	private String category;
 	private String director;
@@ -34,6 +36,7 @@ public class DigitalVideoDisc {
 		director = dvd_director;
 		length = dvd_length;
 		cost = dvd_cost;
+		id = nbDigitalVideoDiscs++;
 	}
 	
 	public DigitalVideoDisc(String dvd_title) {
