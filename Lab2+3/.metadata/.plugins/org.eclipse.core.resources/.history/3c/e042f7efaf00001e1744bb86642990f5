@@ -1,0 +1,20 @@
+package aims;
+
+import java.util.ArrayList;
+
+public class Store {
+	ArrayList<DigitalVideoDisc> itemsInStore = new ArrayList<DigitalVideoDisc>();
+	
+	public void addDVD(DigitalVideoDisc disc) {
+		itemsInStore.add(disc);
+		System.out.println("The disc has been successfully added.");
+	}
+}
+
+
+
+
+
+
+
+
