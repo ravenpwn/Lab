@@ -10,19 +10,21 @@ public class Cart {
 
 	// toString method	
 	public String toString() {
-		String cartString = "***********************CART***********************\n";
+		String cartString = "************************************CART************************************\n\n";
 		if(qtyOrdered == 0) {
 			return "The cart is empty.";
 		}
 		for (int i = 0; i < qtyOrdered; i++ ) {
 			DigitalVideoDisc d = itemsOrdered.get(i);
-			String dCat = checkString(d.getCategory());
-			String dD = checkString(d.getDirector());
-			String dL = checkString(String.valueOf(d.getLength()));
-			String dCost = checkString(String.valueOf(d.getCost()));
+			String dCat = checkString(d.getCategory(), 15);
+			String dD = checkString(d.getDirector(), 15);
+			String dL = checkString(String.valueOf(d.getLength()), 3);
+			String dCost = checkString(String.valueOf(d.getCost()), 5);
 			cartString += String.valueOf(i) + ". DVD - " + String.format("%1$15s", d.getTitle()) + " - " + dCat 
-						+ " - " + dD + " - " + dL + " - " + dCost +"$\n";
+						+ " - " + dD + " - " + dL + " - " + dCost +"$\n"
+						;
 		}
+		cartString += "\n************************************CART************************************";
 		return cartString;
 	}
 	
@@ -73,9 +75,13 @@ public class Cart {
 		return total;
 	}
 	
-	private String checkString(String str) {
+//	public 
+	
+	
+	
+	private String checkString(String str, int len) {
 		String res = (str.isEmpty() || str.equals("0")) ? "Unknown" : str;
-		res = String.format("%1$15s", res);
+		res = String.format("%1$" + len + "s", res);
 		return res;
 	}
 	
