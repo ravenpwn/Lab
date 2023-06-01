@@ -1,13 +1,13 @@
 package aims;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private ArrayList<DigitalVideoDisc> itemsOrdered =  new ArrayList<DigitalVideoDisc>();
+	private List<DigitalVideoDisc> itemsOrdered =  new ArrayList<DigitalVideoDisc>();
 	private int qtyOrdered = 0;
 	
-
 	// toString method	
 	public String toString() {
 		String cartString = "************************************CART************************************\n\n";
@@ -47,6 +47,30 @@ public class Cart {
 		}
 	}
 	
+	public void addDigitalVideoDisc(DigitalVideoDisc[] discs) {
+		int numDisc = discs.length;
+		if (qtyOrdered + numDisc > MAX_NUMBERS_ORDERED) {
+			System.out.println("Cannot add all select DVDs, the cart does not have enough space.");
+			return;
+		} else {
+			for (DigitalVideoDisc d: discs) {
+				addDigitalVideoDisc(d);
+			}
+		}
+		
+	}
+	
+	public void addDigitalVideoDisc(DigitalVideoDisc disc1, DigitalVideoDisc disc2) {
+		if (qtyOrdered + 2 > MAX_NUMBERS_ORDERED) {
+			System.out.println("The cart does not have enough space.");
+			return;
+		} else {
+			addDigitalVideoDisc(disc1);
+			addDigitalVideoDisc(disc2);
+		}
+	}
+	
+	// Remove Disc
 	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
 		if (qtyOrdered == 0) {
 			System.out.println("Cannot remove DVD, the cart is empty.");
@@ -74,14 +98,6 @@ public class Cart {
 		}
 		return total;
 	}
-	
-//	public DigitalVideoDisc searchById(int id) {
-//		for (DigitalVideoDisc d: itemsOrdered) {
-//			if(d)
-//		}
-//	}
-	
-	
 	
 	private String checkString(String str, int len) {
 		String res = (str.isEmpty() || str.equals("0")) ? "Unknown" : str;
