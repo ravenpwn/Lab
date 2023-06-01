@@ -9,7 +9,7 @@ public class Cart {
 	private int qtyOrdered = 0;
 	
 	// toString method	
-	public String toString() {
+	public String print() {
 		String cartString = "************************************CART************************************\n\n";
 		if(qtyOrdered == 0) {
 			return "The cart is empty.";
@@ -90,6 +90,7 @@ public class Cart {
 		
 	}
 	
+	
 	// Calculate the total cost
 	public float totalCost() {
 		float total = 0.0f;
@@ -99,10 +100,43 @@ public class Cart {
 		return total;
 	}
 	
+	public DigitalVideoDisc searchById(int id) {
+		for (DigitalVideoDisc d: itemsOrdered) {
+			if(d.id == id) {
+				return d;
+			}
+		}
+		System.out.println("No DVD matches the search ID.");
+		return null;
+	}
+	
+	public ArrayList<DigitalVideoDisc> searchByTitle(String... titles) {
+		ArrayList<DigitalVideoDisc> res = new ArrayList<DigitalVideoDisc>();
+		for (DigitalVideoDisc d: itemsOrdered) {
+			if(isMatch(d.getTitle(), titles)) {
+				res.add(d);
+			}
+		}
+		if(res.size() == 0) {
+			System.out.println("No DVD matches the search titles.");
+			return null;
+		}
+		return res;
+	}
+	
 	private String checkString(String str, int len) {
 		String res = (str.isEmpty() || str.equals("0")) ? "Unknown" : str;
 		res = String.format("%1$" + len + "s", res);
 		return res;
+	}
+	
+	private boolean isMatch(String title, String[] searchTitles) {
+		for (String t: searchTitles) {
+			if(title.contains(t)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	
