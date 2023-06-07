@@ -2,14 +2,14 @@ package cart;
 
 import java.util.ArrayList;
 import java.util.List;
-import dvd.*;
+import media.DigitalVideoDisc;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	private List<DigitalVideoDisc> itemsOrdered =  new ArrayList<DigitalVideoDisc>();
 	private int qtyOrdered = 0;
 	
-	// toString method	
+	// Method Print	
 	public void print() {
 		String cartString = "\n************************************CART************************************\n\n";
 		if(qtyOrdered == 0) {
@@ -103,7 +103,7 @@ public class Cart {
 	
 	public DigitalVideoDisc searchById(int id) {
 		for (DigitalVideoDisc d: itemsOrdered) {
-			if(d.id == id) {
+			if(d.getId() == id) {
 				return d;
 			}
 		}

@@ -2,11 +2,12 @@ package store;
 
 import java.util.ArrayList;
 
-import dvd.DigitalVideoDisc;
+import media.DigitalVideoDisc;
 
 public class Store {
 	private ArrayList<DigitalVideoDisc> itemsInStore = new ArrayList<DigitalVideoDisc>();
 	
+	//	Method Get items in store
 	public DigitalVideoDisc[] getItemsInStore() {
 		
 		DigitalVideoDisc[] res = new DigitalVideoDisc[itemsInStore.size()];
@@ -17,11 +18,13 @@ public class Store {
 		return res;
 	}
 
+	// Add DVD
 	public void addDVD(DigitalVideoDisc disc) {
 		itemsInStore.add(disc);
 		System.out.println("The disc has been successfully added.");
 	}
 	
+	//	Remove DVD
 	public void removeDVD(DigitalVideoDisc disc) {
 		if (itemsInStore.size() == 0) {
 			System.out.println("Cannot remove DVD, the store is empty.");
