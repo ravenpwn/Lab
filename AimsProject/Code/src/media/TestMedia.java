@@ -6,6 +6,7 @@ public class TestMedia {
 		Track t2 = new Track("abc",10);
 		CompactDisc cd1= new CompactDisc("abcd", null, null, 10, 100);
 		cd1.addTrack(t1);
-		cd1.removeTrack(t2);
+		cd1.addTrack(t2);
+		cd1.play();
 	}
 }
