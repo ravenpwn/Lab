@@ -2,7 +2,7 @@ package media;
 
 import java.util.ArrayList;
 
-public class CompactDisc extends Disc {
+public class CompactDisc extends Disc implements Playable {
 	private String artist;
 	private ArrayList<Track> tracks = new ArrayList<Track>();
 	
@@ -53,5 +53,14 @@ public class CompactDisc extends Disc {
 			totalLength += t.getLength();
 		}
 		return totalLength;
+	}
+	
+	// 	Method Play
+	public void play() {
+		for (int i = 0; i < tracks.size(); i++) {
+			Track t = tracks.get(i);
+			System.out.println("Playing track No." + String.valueOf(i+1) + ": " + t.getTitle());
+			t.play();
+		}
 	}
 }

@@ -1,6 +1,6 @@
 package media;
 
-public class DigitalVideoDisc extends Disc{
+public class DigitalVideoDisc extends Disc implements Playable {
 	
 	// 	Constructors
 	public DigitalVideoDisc(String dvd_title, String dvd_category, String dvd_director, int dvd_length, float dvd_cost) {
@@ -23,5 +23,10 @@ public class DigitalVideoDisc extends Disc{
 		System.out.println(res);
 	}
 	
+	// Method Play
+	public void play() {
+		System.out.println("Playing DVD: " + getTitle());
+		System.out.println("DVD length: " + String.valueOf(getLength()));
+	}
 	
 }
