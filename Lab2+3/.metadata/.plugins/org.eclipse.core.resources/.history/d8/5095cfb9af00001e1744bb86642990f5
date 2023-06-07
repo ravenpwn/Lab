@@ -1,7 +1,0 @@
-package aims;
-
-import java.util.ArrayList;
-
-public class Store {
-	ArrayList<DigitalVideoDisc> itemsInStore = new ArrayList<DigitalVideoDisc>()
-}
