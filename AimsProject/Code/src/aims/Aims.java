@@ -1,7 +1,7 @@
 package aims;
 
 import cart.Cart;
-import dvd.DigitalVideoDisc;
+import media.DigitalVideoDisc;
 
 public class Aims {
 
