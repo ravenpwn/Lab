@@ -47,4 +47,13 @@ public abstract class Media {
 		String res = getTitle() + " - " + getCategory() + " - " + String.valueOf(getCost());
 		System.out.println(res);
 	}
+	
+	@Override
+	public boolean equals(Object e) {
+		if(e instanceof Media) {
+			Media m  = (Media) e;
+			return (m.getTitle() == getTitle()) ;
+		}
+		return false;
+	}
 }

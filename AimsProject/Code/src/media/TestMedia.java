@@ -7,7 +7,7 @@ public class TestMedia {
 		CompactDisc cd1= new CompactDisc("abcd", "def", 100);
 		Media cd2 = new CompactDisc("abcd", "def", 100);
 		cd1.addTrack(t1);
-		cd1.addTrack(t2);
+		cd1.removeTrack(t2);
 		
 	}
 }
