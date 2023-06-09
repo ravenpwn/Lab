@@ -27,5 +27,15 @@ public class Track implements Playable {
 		System.out.println("Playing track: " + getTitle());
 		System.out.println("Track length: " + String.valueOf(getLength()));
 	}
+	
+	@Override
+	public boolean equals(Object e) {
+		if(e instanceof Track) {
+			Track t  = (Track) e;
+			return (t.getTitle() == getTitle()) &&(t.getLength() == getLength());
+		}
+		return false;
+	}
 }
+
 
