@@ -2,21 +2,31 @@ package cart;
 
 import java.util.ArrayList;
 import java.util.List;
-import media.DigitalVideoDisc;
+
+import media.Book;
 import media.Media;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	private List<Media> itemsOrdered =  new ArrayList<Media>();
+	
+	public Media[] getItemOrdered() {
+		Media[] res = new Media[itemsOrdered.size()];
+		if(itemsOrdered.size() == 0) {
+			return null;
+		}
+		res = itemsOrdered.toArray(res);
+		return res;
+	}
 	// Add Disc
 	public void addMedia(Media media) {
 		if (itemsOrdered.size() == MAX_NUMBERS_ORDERED) {
-			System.out.println("Cannot add more DVDs, the cart is full.");
+			System.out.println("Cannot add more media, the cart is full.");
 			return;
 		}
 		
 		if (itemsOrdered.add(media)) {
-			System.out.println("The disc has been successfully added.");
+			System.out.println("The media has been successfully added.");
 		} else {
 			System.out.println("Something wrong happened. Please try again.");
 		}
@@ -29,7 +39,7 @@ public class Cart {
 	public void addMedia(Media ...media) {
 		int numDisc = media.length;
 		if (itemsOrdered.size() + numDisc > MAX_NUMBERS_ORDERED) {
-			System.out.println("Cannot add all select DVDs, the cart does not have enough space.");
+			System.out.println("Cannot add all select media, the cart does not have enough space.");
 			return;
 		} else {
 			for (Media m: media) {
@@ -42,12 +52,12 @@ public class Cart {
 	// Remove Disc
 	public void removeMedia(Media media) {
 		if (itemsOrdered.size() == 0) {
-			System.out.println("Cannot remove DVD, the cart is empty.");
+			System.out.println("Cannot remove media, the cart is empty.");
 			return;
 		}
 		
 		if (itemsOrdered.remove(media)) {
-			System.out.println("The disc has been successfully removed.");
+			System.out.println("The media has been successfully removed.");
 		} else {
 			System.out.println("Something wrong happened. Please try again.");
 		}
@@ -116,7 +126,6 @@ public class Cart {
 		}
 		return false;
 	}
-	
 	
 	
 	

@@ -19,14 +19,18 @@ public class DigitalVideoDisc extends Disc implements Playable {
 	
 	// 	Method: Print
 	public void print() {
-		String res = getTitle() + " - " + getCategory() + " - " + getDirector() + " - " + String.valueOf(getLength()) + " - " + String.valueOf(getCost());
+		String res = getTitle() + " - " + getCategory() + " - " + getDirector() + " - " + getLength() + " - " + getCost() + " - " + (getId()+1);
 		System.out.println(res);
 	}
 	
 	// Method Play
 	public void play() {
-		System.out.println("Playing DVD: " + getTitle());
-		System.out.println("DVD length: " + String.valueOf(getLength()));
+		if(getLength() > 0) {
+			System.out.println("Playing DVD: " + getTitle());
+			System.out.println("DVD length: " + String.valueOf(getLength()));
+		} else {
+			System.out.println("This disc is currently unavailable.");
+		}
 	}
 	
 }

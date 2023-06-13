@@ -1,5 +1,10 @@
 package media;
 
+import java.util.Comparator;
+
+import comparator.MediaComparatorByCostTitle;
+import comparator.MediaComparatorByTitleCost;
+
 public abstract class Media {
 	private static int nbMedia = 0;
 	private final int id;
@@ -7,6 +12,9 @@ public abstract class Media {
 	private String category;
 	private float cost;
 	
+	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+//	public static final Comparator<Media> COMPARE_BY_TITLE_COST = Comparator.comparing(Media::getTitle).thenComparing(Media::getCost);
+	public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
 	//	Setters
 	public void setTitle(String title) {
 		this.title = title;
@@ -44,7 +52,7 @@ public abstract class Media {
 	
 	// Method Print
 	public void print() {
-		String res = getTitle() + " - " + getCategory() + " - " + String.valueOf(getCost());
+		String res = getTitle() + " - " + getCategory() + " - " + getCost() + " - " + (getId()+1);
 		System.out.println(res);
 	}
 	

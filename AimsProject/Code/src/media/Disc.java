@@ -1,6 +1,6 @@
 package media;
 
-public class Disc extends Media {
+public class Disc extends Media implements Playable {
 	private int length;
 	private String director;
 	
@@ -29,4 +29,20 @@ public class Disc extends Media {
 		this(disc_title, disc_category, disc_director, 0, disc_cost);
 	}
 	
+	public void play() {
+		if(getLength() > 0) {
+			System.out.println("Playing: " + getTitle());			
+			System.out.println("Length: " + String.valueOf(getLength()));
+		} else {
+			System.out.println("This disc is currently unavailable.");
+		}
+	}
+	@Override
+	public boolean equals(Object e) {
+		if(e instanceof Disc) {
+			Disc m  = (Disc) e;
+			return (m.getTitle() == getTitle() && m.getLength() == getLength()) ;
+		}
+		return false;
+	}
 }
