@@ -9,8 +9,8 @@ public class Book extends Media{
 	public Book(String book_title, String book_category, float book_cost) {
 		super(book_title, book_category, book_cost);
 	}
-	public Book(String dvd_title) {
-		this(dvd_title, "Unknown", 0);
+	public Book(String book_title) {
+		this(book_title, "Unknown", 0);
 	}
 	
 	// 	Add author
@@ -39,7 +39,7 @@ public class Book extends Media{
 	
 	@Override 	// 	Method Print
 	public void print() {
-		String res = getTitle() + " - " + getCategory() + " - " + authorsToString() + " - " + String.valueOf(getCost());
+		String res = getTitle() + " - " + getCategory() + " - " + authorsToString() + " - " + getCost() + " - " + (getId()+1);
 		System.out.println(res);
 	}
 	

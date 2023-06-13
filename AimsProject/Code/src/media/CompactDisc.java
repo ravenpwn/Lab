@@ -28,7 +28,7 @@ public class CompactDisc extends Disc implements Playable {
 	
 	// 	Method: Print
 	public void print() {
-		String res = getTitle() + " - " + getCategory() + " - " + getDirector() + " - " + String.valueOf(getLength()) + " - " + String.valueOf(getCost());
+		String res = getTitle() + " - " + getCategory() + " - " + getDirector() + " - " + getLength() + " - " + getCost() + " - " + (getId()+1);
 		System.out.println(res);
 	}
 	
@@ -40,6 +40,12 @@ public class CompactDisc extends Disc implements Playable {
 		}
 		tracks.add(track);
 		System.out.println("Track added successfully.");
+	}
+	
+	public void addTrack(Track ...tracks) {
+		for (Track t: tracks) {
+			addTrack(t);
+		}
 	}
 	
 	//	Remove author
@@ -68,10 +74,15 @@ public class CompactDisc extends Disc implements Playable {
 	
 	// 	Method Play
 	public void play() {
-		for (int i = 0; i < tracks.size(); i++) {
-			Track t = tracks.get(i);
-			System.out.println("Track no." + String.valueOf(i+1) + " ...");
-			t.play();
+		System.out.println("\nPlaying CD: " +getTitle());
+		if(getLength() > 0) {
+			for (int i = 0; i < tracks.size(); i++) {
+				Track t = tracks.get(i);
+				System.out.println("Track no." + String.valueOf(i+1) + "...");
+				t.play();
+			}
+		} else {
+			System.out.println("This disc is currently unavailable.\n");
 		}
 	}
 }
