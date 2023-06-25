@@ -2,6 +2,8 @@ package media;
 
 import java.util.ArrayList;
 
+import exception.PlayerException;
+
 public class CompactDisc extends Disc implements Playable {
 	private String artist;
 	private ArrayList<Track> tracks = new ArrayList<Track>();
@@ -73,7 +75,7 @@ public class CompactDisc extends Disc implements Playable {
 	}
 	
 	// 	Method Play
-	public void play() {
+	public void play() throws PlayerException {
 		System.out.println("\nPlaying CD: " +getTitle());
 		if(getLength() > 0) {
 			for (int i = 0; i < tracks.size(); i++) {
@@ -82,7 +84,7 @@ public class CompactDisc extends Disc implements Playable {
 				t.play();
 			}
 		} else {
-			System.out.println("This disc is currently unavailable.\n");
+			throw new PlayerException("ERROR: CD length is non-positive .");
 		}
 	}
 }
