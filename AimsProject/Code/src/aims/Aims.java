@@ -7,7 +7,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.naming.LimitExceededException;
+
 import cart.Cart;
+import exception.PlayerException;
 import media.*;
 import store.Store;
 
@@ -83,7 +86,7 @@ public class Aims {
 		System.out.println("Please choose a number: 0-1-2-3-4-5"); 
 		} 
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LimitExceededException, PlayerException {
 		init();
 		Scanner scanner = new Scanner(System.in);
 		showMenu:while(true) {
@@ -112,7 +115,7 @@ public class Aims {
 		}
 	}
 	
-	private static void viewStoreInteractive() {
+	private static void viewStoreInteractive() throws LimitExceededException, PlayerException {
 		Scanner scanner = new Scanner(System.in);
 		storeMenu:while(true) {
 			storeMenu();
@@ -171,7 +174,7 @@ public class Aims {
 		}
 	}
 	
-	private static void mediaInteractive(ArrayList<Media> medias) {
+	private static void mediaInteractive(ArrayList<Media> medias) throws LimitExceededException, PlayerException {
 		Scanner scanner = new Scanner(System.in);
 		mediaDetail:while(true) {
 			mediaDetailsMenu();
@@ -325,7 +328,7 @@ public class Aims {
 		}
 	}
 	
-	private static void cartMenuInteractive() {
+	private static void cartMenuInteractive() throws PlayerException {
 		Scanner scanner = new Scanner(System.in);
 		cartMenu:while(true) {
 			cartMenu();
@@ -336,13 +339,15 @@ public class Aims {
 				System.out.println("Do you want to filter by id or by title?");
 				String key = scanner.nextLine();
 				if(key.equals("id")) {
-					int keyword = scanner.nextInt();
+					String keyword = scanner.nextLine();
 					scanner.nextLine();
-					Media media = cart.searchById(keyword);
+					ArrayList<Media> media = cart.searchById(keyword);
 					if(media.equals(null)) {
 						System.out.println("no media found");
-					} else {						
-						media.print();
+					} else {
+						for (Media m: media) {							
+							m.print();
+						}
 					}
 					break;
 				} else if (key.equals("title")) {
@@ -363,7 +368,7 @@ public class Aims {
 				}
 			}
 			case "2": {
-				List<Media> medias = new ArrayList<>(Arrays.asList(cart.getItemOrdered()));
+				List<Media> medias = cart.getItemOrdered();
 				System.out.println("Do you want to sort by cost or by title?");
 				String key = scanner.nextLine();
 				if(key.equals("cost")) {					

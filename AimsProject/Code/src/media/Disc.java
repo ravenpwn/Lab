@@ -1,5 +1,7 @@
 package media;
 
+import exception.PlayerException;
+
 public class Disc extends Media implements Playable {
 	private int length;
 	private String director;
@@ -29,12 +31,12 @@ public class Disc extends Media implements Playable {
 		this(disc_title, disc_category, disc_director, 0, disc_cost);
 	}
 	
-	public void play() {
+	public void play() throws PlayerException {
 		if(getLength() > 0) {
 			System.out.println("Playing: " + getTitle());			
 			System.out.println("Length: " + String.valueOf(getLength()));
 		} else {
-			System.out.println("This disc is currently unavailable.");
+			throw new PlayerException("ERROR: Disc length is non-positive .");
 		}
 	}
 	@Override
