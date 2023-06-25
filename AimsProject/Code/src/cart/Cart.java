@@ -3,26 +3,24 @@ package cart;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.LimitExceededException;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import media.Book;
 import media.Media;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private List<Media> itemsOrdered =  new ArrayList<Media>();
+	private ObservableList<Media> itemsOrdered =  FXCollections.observableArrayList();
 	
-	public Media[] getItemOrdered() {
-		Media[] res = new Media[itemsOrdered.size()];
-		if(itemsOrdered.size() == 0) {
-			return null;
-		}
-		res = itemsOrdered.toArray(res);
-		return res;
+	public ObservableList<Media> getItemOrdered() {
+		return itemsOrdered;
 	}
 	// Add Disc
-	public void addMedia(Media media) {
+	public void addMedia(Media media) throws LimitExceededException {
 		if (itemsOrdered.size() == MAX_NUMBERS_ORDERED) {
-			System.out.println("Cannot add more media, the cart is full.");
-			return;
+			throw new LimitExceededException("ERROR: The number of media has reached its limit");
 		}
 		
 		if (itemsOrdered.add(media)) {
@@ -36,7 +34,7 @@ public class Cart {
 		}
 	}
 	
-	public void addMedia(Media ...media) {
+	public void addMedia(Media ...media) throws LimitExceededException {
 		int numDisc = media.length;
 		if (itemsOrdered.size() + numDisc > MAX_NUMBERS_ORDERED) {
 			System.out.println("Cannot add all select media, the cart does not have enough space.");
@@ -78,14 +76,18 @@ public class Cart {
 		return total;
 	}
 	
-	public Media searchById(int id) {
+	public ArrayList<Media> searchById(String id) {
+		ArrayList<Media> res = new ArrayList<Media>();
 		for (Media m: itemsOrdered) {
-			if(m.getId() == id) {
-				return m;
+			if(String.valueOf(m.getId()).contains(id)) {
+				res.add(m);
 			}
 		}
-		System.out.println("No media matches the search ID.");
-		return null;
+		if(res.size() == 0) {
+			System.out.println("No media matches the search ID.");
+			return null;
+		}
+		return res;
 	}
 	
 	public ArrayList<Media> searchByTitle(String... titles) {
@@ -127,6 +129,8 @@ public class Cart {
 		return false;
 	}
 	
-	
+	public void emptyCart() {
+		itemsOrdered = FXCollections.observableArrayList();
+	}
 	
 }

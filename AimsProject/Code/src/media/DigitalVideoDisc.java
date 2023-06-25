@@ -1,5 +1,7 @@
 package media;
 
+import exception.PlayerException;
+
 public class DigitalVideoDisc extends Disc implements Playable {
 	
 	// 	Constructors
@@ -24,12 +26,12 @@ public class DigitalVideoDisc extends Disc implements Playable {
 	}
 	
 	// Method Play
-	public void play() {
+	public void play() throws PlayerException {
 		if(getLength() > 0) {
 			System.out.println("Playing DVD: " + getTitle());
 			System.out.println("DVD length: " + String.valueOf(getLength()));
 		} else {
-			System.out.println("This disc is currently unavailable.");
+			throw new PlayerException("ERROR: DVD length is non-positive .");
 		}
 	}
 	

@@ -2,10 +2,12 @@ package cart;
 
 import java.util.ArrayList;
 
+import javax.naming.LimitExceededException;
+
 import media.DigitalVideoDisc;
 import media.Media;
 public class CartTest {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LimitExceededException {
 		
 		Cart cart = new Cart();
 		
@@ -19,8 +21,11 @@ public class CartTest {
 		cart.addMedia(dvd3);
 		
 		cart.print();
-		Media dvdId1 = cart.searchById(1);
-		dvdId1.print();
+		ArrayList<Media> dvdId1 = cart.searchById("1");
+		for (Media m:dvdId1) {
+			
+			m.print();
+		}
 		ArrayList<Media> dvdsNameA = cart.searchByTitle("a");
 		for (Media m: dvdsNameA) {
 			m.print();;
